@@ -1,0 +1,35 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main() {
+    ofstream fout;
+    fout.open("odd.txt");
+    for (int i = 1; i <= 10000; i++) {
+        if (i % 2 == 1) {
+            fout << i << endl;
+        }
+    }
+    fout.close();
+    fout.open("even.txt");
+    for (int i = 1; i <= 10000; i++) {
+        if (i % 2 == 0) {
+            fout << i << endl;
+        }
+    }
+    fout.close();
+    
+    ifstream finEven, finOdd;
+    finEven.open("even.txt"); //fin is used to read from files
+    finOdd.open("odd.txt");
+    fout.open("sum.txt"); //fout used to write in files
+    int oddNum, evenNum;
+    while (finOdd >> oddNum && finEven >> evenNum) {
+        int sum = oddNum + evenNum;  
+        fout << sum << endl;        
+        }
+}
+
+
+
